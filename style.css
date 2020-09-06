@@ -1,0 +1,32 @@
+html{
+    font-family: sans-serif;
+}
+.boxes{
+    display:flex;
+    flex-direction: column;
+}
+.box{
+    background: #eee;
+    border: 5px solid #ccc;
+    padding: 20px;
+}
+.navigator-main{
+    display:flex;
+    flex-direction: row;
+}
+.navigator{
+    flex:1;
+    /*position: sticky; фиксирует мой навигатор???*/
+}
+.main{
+    flex:4;
+}
+.header-box{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+h{
+    font-size:20px;
+}
