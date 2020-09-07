@@ -65,5 +65,7 @@ h2 {
 
 .indentation {
     flex:1;
+    padding-top:0;
+    padding-bottom: 0;
     padding-left:20px;
 }
