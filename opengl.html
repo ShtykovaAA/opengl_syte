@@ -1,24 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  </head>
+  <body>
     <main class="boxes">
-        <section class="box header-box">
-            <h>OpenGL средствами pyglet</h>
-        </section>
-        <section class="box navigator-main">
-            <div class="box navigator">
-                navigator
+      <section class="box header-box">
+        <h>OpenGL средствами pyglet</h>
+      </section>
+      <section class="box navigator-main">
+        <div class="box navigator">navigator</div>
+        <div class="box main">
+          <a class="article">
+            <h2 class="aricle-title">Введение</h2>
+            <p class="aricle-content">
+              Приводятся некоторые средства библиотеки pyglet для работы с
+              OpenGL. Программирование выполняется на Python 3.6.6.
+              Рассматривается вывод примитивов, заливка полигона с
+              использованием растрового образа, применение материалов, наложение
+              текстуры и употребление шейдеров. Предполагается, что читатель
+              знаком с основами компьютерной графики и OpenGL. По этой причине
+              опускается рассмотрение вопросов проецирования, аффинных
+              преобразований координат, систем цветов и пр., так же как и
+              процедур и функций OpenGL. Некоторые сведения об OpenGL можно
+              найти, например, в [1-9].
+            </p>
+          </a>
+          <a class="article">
+            <div class="aricle-body">
+            <h2 class="article-title">Вывод прямоугольника и треугольников</h2>
+            <p class="article-content">
+              Программирование вывода прямоугольника позволит привести код,
+              обеспечивающий визуализацию на основе pyglet OpenGL.<br />
+              import pyglet <br />
+              from pyglet import app, gl, graphics <br />
+              from pyglet.window import Window <br />
+              dx, dy = 25, 15 # Размеры прямоугольника <br />
+              dx2 = dx / 2<br />
+              dy2 = dy / 2<br />
+              wx, wy = 1.5 * dx2, 1.5 * dy2 # Параметры области визуализации<br />
+              width, height = int(20 * wx), int(20 * wy) # Размеры окна
+              вывода<br />
+              # Создаем окно визуализации<br />
+              window = Window(visible = True, width = width, height = height,
+              <br />
+              resizable = True, caption = 'Прямоугольник')<br />
+              gl.glClearColor(0.1, 0.1, 0.1, 1.0) # Задаем почти черный цвет
+              фона<br />
+              gl.glClear(gl.GL_COLOR_BUFFER_BIT) # Заливка окна цветом фона<br />
+              @window.event<br />
+              def on_draw():
+              <div class="indentation">
+              # Проецирование<br />
+              gl.glMatrixMode(gl.GL_PROJECTION) # Теперь текущей является
+              матрица проецирования<br />
+              gl.glLoadIdentity() # Инициализация матрицы проецирования<br />
+              gl.glOrtho(-wx, wx, -wy, wy, -1, 1) # Ортографическое
+              проецирование<br />
+              gl.glColor3f(0, 1, 0) # Зеленый цвет<br />
+              gl.glBegin(gl.GL_QUADS) # Обход против часовой стрелки<br />
+              gl.glVertex3f(-dx2, -dy2, 0)<br />
+              gl.glVertex3f(dx2, -dy2, 0)<br />
+              gl.glVertex3f(dx2, dy2, 0)<br />
+              gl.glVertex3f(-dx2, dy2, 0)<br />
+              gl.glEnd()<br />
+              </div>
+              app.run()<br />
+            </p>
             </div>
-            <div class="box main">
-                main
-            </div>
-        </section>
+          </a>
+          
+          <!-- <a class="article">
+            <h2 class="article-title"></h2>
+            <p class="article-content"></p>
+          </a>
+          <a class="article">
+            <h2 class="article-title"></h2>
+            <p class="article-content"></p>
+          </a>
+          <a class="article">
+            <h2 class="article-title"></h2>
+            <p class="article-content"></p>
+          </a>
+          <a class="article">
+            <h2 class="article-title"></h2>
+            <p class="article-content"></p>
+          </a>
+          <a class="article">
+            <h2 class="article-title"></h2>
+            <p class="article-content"></p>
+          </a>
+          <a class="article">
+            <h2 class="article-title"></h2>
+            <p class="article-content"></p>
+          </a>
+          <a class="article">
+            <h2 class="article-title"></h2>
+            <p class="article-content"></p>
+          </a> -->
+
+        </div>
+      </section>
     </main>
-</body>
+  </body>
 </html>

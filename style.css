@@ -1,32 +1,69 @@
-html{
+html {
     font-family: sans-serif;
 }
-.boxes{
-    display:flex;
+
+.boxes {
+    display: flex;
     flex-direction: column;
 }
-.box{
+
+.box {
     background: #eee;
     border: 5px solid #ccc;
     padding: 20px;
 }
-.navigator-main{
-    display:flex;
+
+.navigator-main {
+    display: flex;
     flex-direction: row;
 }
-.navigator{
-    flex:1;
+
+.navigator {
+    flex: 1;
     /*position: sticky; фиксирует мой навигатор???*/
 }
-.main{
-    flex:4;
+
+.main {
+    flex: 4;
 }
-.header-box{
+
+.header-box {
     justify-content: center;
     align-items: center;
     text-align: center;
     position: relative;
 }
-h{
-    font-size:20px;
+
+h {
+    font-size: 20px;
+}
+
+.article {
+    background: white;
+    color: #666;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-basis: auto;
+    /* Устанавливает начальный размер элемента в зависимости от его содержимого */
+    margin: 10px;
+}
+
+.article-content {
+    flex: 1;
+    /* Содержимое заполняет все оставшееся место, тем самым прижимая информационную панель к нижней части */
+    margin-top: 5px;
+}
+
+.article-title{
+    flex:1;
+}
+
+h2 {
+    margin: 0;
+}
+
+.indentation {
+    flex:1;
+    padding-left:20px;
 }
