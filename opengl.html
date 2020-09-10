@@ -31,46 +31,53 @@
           </a>
           <a class="article">
             <div class="aricle-body">
-            <h2 class="article-title">Вывод прямоугольника и треугольников</h2>
-            <p class="article-content">
-              Программирование вывода прямоугольника позволит привести код,
-              обеспечивающий визуализацию на основе pyglet OpenGL.<br />
-              import pyglet <br />
-              from pyglet import app, gl, graphics <br />
-              from pyglet.window import Window <br />
-              dx, dy = 25, 15 # Размеры прямоугольника <br />
-              dx2 = dx / 2<br />
-              dy2 = dy / 2<br />
-              wx, wy = 1.5 * dx2, 1.5 * dy2 # Параметры области визуализации<br />
-              width, height = int(20 * wx), int(20 * wy) # Размеры окна
-              вывода<br />
-              # Создаем окно визуализации<br />
-              window = Window(visible = True, width = width, height = height,
-              <br />
-              resizable = True, caption = 'Прямоугольник')<br />
-              gl.glClearColor(0.1, 0.1, 0.1, 1.0) # Задаем почти черный цвет
-              фона<br />
-              gl.glClear(gl.GL_COLOR_BUFFER_BIT) # Заливка окна цветом фона<br />
-              @window.event<br />
-              def on_draw(): <br />
-              <div class="indentation">
-              # Проецирование<br />
-              gl.glMatrixMode(gl.GL_PROJECTION) # Теперь текущей является
-              матрица проецирования<br />
-              gl.glLoadIdentity() # Инициализация матрицы проецирования<br />
-              gl.glOrtho(-wx, wx, -wy, wy, -1, 1) # Ортографическое
-              проецирование<br />
-              gl.glColor3f(0, 1, 0) # Зеленый цвет<br />
-              gl.glBegin(gl.GL_QUADS) # Обход против часовой стрелки<br />
-              gl.glVertex3f(-dx2, -dy2, 0)<br />
-              gl.glVertex3f(dx2, -dy2, 0)<br />
-              gl.glVertex3f(dx2, dy2, 0)<br />
-              gl.glVertex3f(-dx2, dy2, 0)<br />
-              gl.glEnd()<br />
-              </div>
-              app.run()<br />
-            </p>
-            </div>
+              <h2 class="article-title">
+                Вывод прямоугольника и треугольников
+              </h2>
+              <p class="article-content">
+                Программирование вывода прямоугольника позволит привести код,
+                обеспечивающий визуализацию на основе pyglet OpenGL.<br />
+                <div class="article-code">
+                    import pyglet <br />
+                    from pyglet import app, gl, graphics <br />
+                    from pyglet.window import Window <br /><br />
+                    dx, dy = 25, 15 # Размеры прямоугольника <br />
+                    dx2 = dx / 2<br />
+                    dy2 = dy / 2<br />
+                    wx, wy = 1.5 * dx2, 1.5 * dy2 # Параметры области визуализации<br />
+                    width, height = int(20 * wx), int(20 * wy) # Размеры окна
+                    вывода<br /><br />
+                    # Создаем окно визуализации<br />
+                    window = Window(visible = True, width = width, height = height,
+                    <br />
+                    resizable = True, caption = 'Прямоугольник')<br />
+                    gl.glClearColor(0.1, 0.1, 0.1, 1.0) # Задаем почти черный цвет
+                    фона<br />
+                    gl.glClear(gl.GL_COLOR_BUFFER_BIT) # Заливка окна цветом фона<br />
+                    @window.event<br /><br />
+                    def on_draw(): <br />
+                    <div class="indentation">
+                      # Проецирование<br />
+                      gl.glMatrixMode(gl.GL_PROJECTION) # Теперь текущей является
+                      матрица проецирования<br />
+                      gl.glLoadIdentity() # Инициализация матрицы проецирования<br />
+                      gl.glOrtho(-wx, wx, -wy, wy, -1, 1) # Ортографическое
+                      проецирование<br />
+                      gl.glColor3f(0, 1, 0) # Зеленый цвет<br />
+                      gl.glBegin(gl.GL_QUADS) # Обход против часовой стрелки<br />
+                      gl.glVertex3f(-dx2, -dy2, 0)<br />
+                      gl.glVertex3f(dx2, -dy2, 0)<br />
+                      gl.glVertex3f(dx2, dy2, 0)<br />
+                      gl.glVertex3f(-dx2, dy2, 0)<br />
+                      gl.glEnd()<br />
+                    </div>
+                    app.run()<br />
+                  </div>
+              </p>
+                <figure class="article-image">
+                <img src="http://100byte.ru/python/pyglet_gl/p1.png" alt="">
+                </figure>
+           </div>
           </a>
           
           <!-- <a class="article">

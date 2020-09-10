@@ -59,6 +59,17 @@ h {
     flex:1;
 }
 
+/*.article-image {
+    background: #eee;
+    display: block;
+    padding-top: 75%;
+    position: relative;
+    width: 30%;
+    height: 30%;
+  }
+*/
+  
+
 h2 {
     margin: 0;
 }
@@ -68,4 +79,11 @@ h2 {
     padding-top:0;
     padding-bottom: 0;
     padding-left:20px;
+}
+
+.article-code{
+    flex:3;
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin: 0px;
 }
