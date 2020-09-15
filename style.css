@@ -20,6 +20,7 @@ html {
 
 .navigator {
     flex: 1;
+    position: relative;
     /*position: sticky; фиксирует мой навигатор???*/
 }
 
@@ -59,15 +60,12 @@ h {
     flex:1;
 }
 
-/*.article-image {
-    background: #eee;
+.image {
     display: block;
-    padding-top: 75%;
-    position: relative;
-    width: 30%;
-    height: 30%;
-  }
-*/
+    margin:0;
+    text-align: center;
+}
+
   
 
 h2 {
@@ -86,4 +84,36 @@ h2 {
     border: 2px solid #ccc;
     padding: 20px;
     margin: 0px;
+}
+.img-info{
+    display: block;
+    padding:0;
+    margin:0;
+    
+}
+
+ul{
+    list-style: none;
+    margin:10;
+    padding-left:0;
+}
+
+.link{
+    text-decoration: none;
+    background: #ccc;
+    color: black;
+    width: 40px;
+    height: 20px;
+    border-radius: 4px;
+    border: 2px solid #666;
+    -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+    -o-transition: all 0.3s 0.01s ease;
+    -webkit-transition: all 0.3s 0.01s ease;
+}
+
+li{
+    display: block;
+    float: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
