@@ -8,9 +8,11 @@ html {
 }
 
 .box {
-    background: #eee;
-    border: 5px solid #ccc;
+    background: white;
+    /*border: 5px solid #ccc;*/
     padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .navigator-main {
@@ -66,7 +68,7 @@ html {
 
 
 h1, h2 {
-    color: #666;
+    color: #123C69;
     margin: 0;
 }
 
@@ -79,10 +81,13 @@ h1, h2 {
 
 .article-code{
     flex:3;
-    border: 2px solid #ccc;
+    /*border: 2px solid #ccc;*/
     padding: 20px;
     margin: 0px;
     font-family: Consolas;
+    background:#f9fbfd;
+    border-radius: 10px;
+    border: 1px solid #ccc;
 }
 .img-info{
     display: block;
@@ -92,9 +97,14 @@ h1, h2 {
 }
 
 .link-title{
-    margin-bottom: 5px;
+    margin-top:10px;
+    margin-bottom: 8px;
 }
 
+.navigator{
+    background: #f3f3f3;
+    border-radius: 10px;
+}
 ul{
     display: block;
     list-style: none;
