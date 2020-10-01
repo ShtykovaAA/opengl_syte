@@ -20,11 +20,6 @@ html {
     flex-direction: row;
 }
 
-.navigator {
-    flex: 1;
-    position: relative;
-    /*position: sticky; фиксирует мой навигатор???*/
-}
 
 .main {
     flex: 4;
@@ -37,23 +32,22 @@ html {
     position: relative;
 }
 
-
-
 .article {
     background: white;
-    color: #666;
+    color: rgb(66, 66, 66);
     display: flex;
     flex: 1;
     flex-direction: column;
     flex-basis: auto;
     /* Устанавливает начальный размер элемента в зависимости от его содержимого */
-    margin: 10px;
+    margin: 15px;
 }
 
 .article-content {
     flex: 1;
     /* Содержимое заполняет все оставшееся место, тем самым прижимая информационную панель к нижней части */
-    margin-top: 5px;
+    margin-top: 15px;
+    margin-bottom: 0;
 }
 
 .article-title{
@@ -83,12 +77,15 @@ h1, h2 {
     flex:3;
     /*border: 2px solid #ccc;*/
     padding: 20px;
-    margin: 0px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    color: #666;
     font-family: Consolas;
     background:#f9fbfd;
     border-radius: 10px;
     border: 1px solid #ccc;
 }
+
 .img-info{
     display: block;
     padding:0;
@@ -104,19 +101,22 @@ h1, h2 {
 .navigator{
     background: #f3f3f3;
     border-radius: 10px;
+    flex: 1;
+    position: sticky;
+    top: -60px;
+    height: 600px;
 }
+
 ul{
     display: block;
     list-style: none;
     margin:0;
     padding:0;
-    justify-content: flex-start;
 }
 
 .link{
     display: block;
     text-decoration: none;
-    flex-basis: auto;
     padding-top:10px;
     color:  #666;
     font-weight: 0;

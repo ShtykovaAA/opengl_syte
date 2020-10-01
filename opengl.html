@@ -1,137 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <main class="boxes">
-      <section class="box header-box">
-        <h1>OpenGL средствами pyglet</h1>
-      </section>
-      <section class="box navigator-main">
-        <div class="box navigator">
-          <h2 class="link-title">Содержание</h2>
-          <ul>
-            <li><a class="link" href="#Введение">Введение</a></li>
-            <li><a class="link" href="#Вывод прямоугольника и треугольников">Вывод прямоугольника и треугольников</a></li>
-            <li><a class="link" href="#Вывод точек">Вывод точек</a></li>
-            <li><a class="link"href="#Вывод линий">Вывод линий</a></li>
-            <li><a class="link" href="#Лицевая и нелицевая стороны полигона">Лицевая и нелицевая стороны полигона</a></li>
-            <li><a class="link" href="#Заливка полигона с использованием образца">Заливка полигона с использованием образца</a></li>
-            <li><a class="link" href="#Использование текстуры">Использование текстуры</a></li>
-            <li><a class="link" href="#Использование материала">Использование материала</a></li>
-            <li><a class="link" href="#Вывод параболоида">Вывод параболоида</a></li>
-            <li><a class="link" href="#Использование нескольких текстур">Использование нескольких текстур</a></li>
-            <li><a class="link" href="#Вращающийся куб">Вращающийся куб</a></li>
-            <li><a class="link" href="#Тест глубины">Тест глубины</a></li>
-            <li><a class="link" href="#Контрольные вопросы">Контрольные вопросы</a></li>
-            <li><a class="link" href="#ЛР 2">ЛР 2</a></li>
-            <li><a class="link" href="#ЛР 3">ЛР 3</a></li>
-            <li><a class="link" href="#Литература">Литература</a></li>
-          </ul>
-        </div>
-        <div class="box main">
-          <a class="article" id="Введение">
-            <h2 class="aricle-title" >Введение</h2>
-            <p class="aricle-content">
-              Приводятся некоторые средства библиотеки pyglet для работы с
-              OpenGL. Программирование выполняется на Python 3.6.6.
-              Рассматривается вывод примитивов, заливка полигона с
-              использованием растрового образа, применение материалов, наложение
-              текстуры и употребление шейдеров. Предполагается, что читатель
-              знаком с основами компьютерной графики и OpenGL. По этой причине
-              опускается рассмотрение вопросов проецирования, аффинных
-              преобразований координат, систем цветов и пр., так же как и
-              процедур и функций OpenGL. Некоторые сведения об OpenGL можно
-              найти, например, в [1-9].
-            </p>
-          </a>
-          <a class="article" id="Вывод прямоугольника и треугольников">
-            <div class="aricle-body" >
-              <h2 class="article-title">
-                Вывод прямоугольника и треугольников
-              </h2>
-              <p class="article-content">
-                Программирование вывода прямоугольника позволит привести код,
-                обеспечивающий визуализацию на основе pyglet OpenGL.<br />
-                <div class="article-code">
-                    import pyglet <br />
-                    from pyglet import app, gl, graphics <br />
-                    from pyglet.window import Window <br /><br />
-                    dx, dy = 25, 15 # Размеры прямоугольника <br />
-                    dx2 = dx / 2<br />
-                    dy2 = dy / 2<br />
-                    wx, wy = 1.5 * dx2, 1.5 * dy2 # Параметры области визуализации<br />
-                    width, height = int(20 * wx), int(20 * wy) # Размеры окна
-                    вывода<br /><br />
-                    # Создаем окно визуализации<br />
-                    window = Window(visible = True, width = width, height = height,
-                    <br />
-                    resizable = True, caption = 'Прямоугольник')<br />
-                    gl.glClearColor(0.1, 0.1, 0.1, 1.0) # Задаем почти черный цвет
-                    фона<br />
-                    gl.glClear(gl.GL_COLOR_BUFFER_BIT) # Заливка окна цветом фона<br />
-                    @window.event<br /><br />
-                    def on_draw(): <br />
-                    <div class="indentation">
-                      # Проецирование<br />
-                      gl.glMatrixMode(gl.GL_PROJECTION) # Теперь текущей является
-                      матрица проецирования<br />
-                      gl.glLoadIdentity() # Инициализация матрицы проецирования<br />
-                      gl.glOrtho(-wx, wx, -wy, wy, -1, 1) # Ортографическое
-                      проецирование<br />
-                      gl.glColor3f(0, 1, 0) # Зеленый цвет<br />
-                      gl.glBegin(gl.GL_QUADS) # Обход против часовой стрелки<br />
-                      gl.glVertex3f(-dx2, -dy2, 0)<br />
-                      gl.glVertex3f(dx2, -dy2, 0)<br />
-                      gl.glVertex3f(dx2, dy2, 0)<br />
-                      gl.glVertex3f(-dx2, dy2, 0)<br />
-                      gl.glEnd()<br />
-                    </div>
-                    app.run()<br />
-                  </div>
-              </p>
-           </div>
-           <figure class="image">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="boxes">
+    <section class="box header-box">
+      <h1>OpenGL средствами pyglet</h1>
+    </section>
+    <section class="box navigator-main">
+      <div class="box navigator">
+        <h2 class="link-title">Содержание</h2>
+        <ul>
+          <li><a class="link" href="#Введение">Введение</a></li>
+          <li><a class="link" href="#Вывод прямоугольника и треугольников">Вывод прямоугольника и треугольников</a></li>
+          <li><a class="link" href="#Вывод точек">Вывод точек</a></li>
+          <li><a class="link" href="#Вывод линий">Вывод линий</a></li>
+          <li><a class="link" href="#Лицевая и нелицевая стороны полигона">Лицевая и нелицевая стороны полигона</a></li>
+          <li><a class="link" href="#Заливка полигона с использованием образца">Заливка полигона с использованием
+              образца</a></li>
+          <li><a class="link" href="#Использование текстуры">Использование текстуры</a></li>
+          <li><a class="link" href="#Использование материала">Использование материала</a></li>
+          <li><a class="link" href="#Вывод параболоида">Вывод параболоида</a></li>
+          <li><a class="link" href="#Использование нескольких текстур">Использование нескольких текстур</a></li>
+          <li><a class="link" href="#Вращающийся куб">Вращающийся куб</a></li>
+          <li><a class="link" href="#Тест глубины">Тест глубины</a></li>
+          <li><a class="link" href="#Контрольные вопросы">Контрольные вопросы</a></li>
+          <li><a class="link" href="#ЛР 2">ЛР 2</a></li>
+          <li><a class="link" href="#ЛР 3">ЛР 3</a></li>
+          <li><a class="link" href="#Литература">Литература</a></li>
+        </ul>
+      </div>
+      <div class="box main">
+        <a class="article" id="Введение">
+          <h2 class="aricle-title">Введение</h2>
+          <p class="aricle-content">
+            Приводятся некоторые средства библиотеки pyglet для работы с
+            OpenGL. Программирование выполняется на Python 3.6.6.
+            Рассматривается вывод примитивов, заливка полигона с
+            использованием растрового образа, применение материалов, наложение
+            текстуры и употребление шейдеров. Предполагается, что читатель
+            знаком с основами компьютерной графики и OpenGL. По этой причине
+            опускается рассмотрение вопросов проецирования, аффинных
+            преобразований координат, систем цветов и пр., так же как и
+            процедур и функций OpenGL. Некоторые сведения об OpenGL можно
+            найти, например, в [1-9].
+          </p>
+        </a>
+        <a class="article" id="Вывод прямоугольника и треугольников">
+          <!-- <div class="aricle-body"> -->
+          <h2 class="article-title">Вывод прямоугольника и треугольников</h2>
+          <p class="article-content">
+            Программирование вывода прямоугольника позволит привести код,
+            обеспечивающий визуализацию на основе pyglet OpenGL.<br />
+            <div class="article-code">
+              import pyglet <br />
+              from pyglet import app, gl, graphics <br />
+              from pyglet.window import Window <br /><br />
+              dx, dy = 25, 15 # Размеры прямоугольника <br />
+              dx2 = dx / 2<br />
+              dy2 = dy / 2<br />
+              wx, wy = 1.5 * dx2, 1.5 * dy2 # Параметры области визуализации<br />
+              width, height = int(20 * wx), int(20 * wy) # Размеры окна
+              вывода<br /><br />
+              # Создаем окно визуализации<br />
+              window = Window(visible = True, width = width, height = height,
+              <br />
+              resizable = True, caption = 'Прямоугольник')<br />
+              gl.glClearColor(0.1, 0.1, 0.1, 1.0) # Задаем почти черный цвет
+              фона<br />
+              gl.glClear(gl.GL_COLOR_BUFFER_BIT) # Заливка окна цветом фона<br />
+              @window.event<br /><br />
+              def on_draw(): <br />
+              <div class="indentation">
+                # Проецирование<br />
+                gl.glMatrixMode(gl.GL_PROJECTION) # Теперь текущей является
+                матрица проецирования<br />
+                gl.glLoadIdentity() # Инициализация матрицы проецирования<br />
+                gl.glOrtho(-wx, wx, -wy, wy, -1, 1) # Ортографическое
+                проецирование<br />
+                gl.glColor3f(0, 1, 0) # Зеленый цвет<br />
+                gl.glBegin(gl.GL_QUADS) # Обход против часовой стрелки<br />
+                gl.glVertex3f(-dx2, -dy2, 0)<br />
+                gl.glVertex3f(dx2, -dy2, 0)<br />
+                gl.glVertex3f(dx2, dy2, 0)<br />
+                gl.glVertex3f(-dx2, dy2, 0)<br />
+                gl.glEnd()<br />
+              </div>
+              app.run()<br />
+            </div>
+          </p>
+          <!--  </div> -->
+          <figure class="image">
             <img src="http://100byte.ru/python/pyglet_gl/p1.png" alt="">
-            <p class ="img-info">Результат: прямоугольник</p>
-           </figure>
-          </a>
+            <p class="img-info">Результат: прямоугольник</p>
+          </figure>
+        </a>
 
-          <!-- <a class="article">
-            <h2 class="article-title"></h2>
-            <p class="article-content"></p>
-          </a>
-          <a class="article">
-            <h2 class="article-title"></h2>
-            <p class="article-content"></p>
-          </a>
-          <a class="article">
-            <h2 class="article-title"></h2>
-            <p class="article-content"></p>
-          </a>
-          <a class="article">
-            <h2 class="article-title"></h2>
-            <p class="article-content"></p>
-          </a>
-          <a class="article">
-            <h2 class="article-title"></h2>
-            <p class="article-content"></p>
-          </a>
-          <a class="article">
-            <h2 class="article-title"></h2>
-            <p class="article-content"></p>
-          </a>
-          <a class="article">
-            <h2 class="article-title"></h2>
-            <p class="article-content"></p>
-          </a> -->
+        <a class="article" id="Вывод точек">
+          <h2 class="article-title">
+            Вывод точек
+          </h2>
+          <p class="article-content">
+            Для точки можно задать ее размер:
+            <div class="article-code">
+              gl.glPointSize(16)
+            </div>
+            и режим сглаживания:
+            <div class="article-code">gl.glEnable(gl.GL_POINT_SMOOTH)</div>
+            Отобразим 8 точек: 4, используя glBegin / glEnd, и 4 сглаженные, применив draw, (рис. 3):
+            <div class="article-code">
+              import pyglet<br />
+              from pyglet import app, gl, graphics<br />
+              from pyglet.window import Window<br /><br />
+              d, d2 = 12, 10<br />
+              wx, wy = 1.5 * d, 1.2 * d # Параметры области визуализации<br />
+              width, height = int(20 * wx), int(20 * wy) # Размеры окна вывода<br />
+              window = Window(visible = True, width = width, height = height,<br />
+              resizable = True, caption = 'Точки')<br />
+              gl.glClearColor(0.1, 0.1, 0.1, 1.0)<br />
+              gl.glClear(gl.GL_COLOR_BUFFER_BIT)<br />
+              @window.event<br /><br />
+              def on_draw():<br />
+              <div class="indentation">
+                gl.glMatrixMode(gl.GL_PROJECTION)<br />
+                gl.glLoadIdentity()<br />
+                gl.glOrtho(-wx, wx, -wy, wy, -1, 1)<br />
+                gl.glPointSize(16)<br />
+                gl.glBegin(gl.GL_POINTS)<br />
+                gl.glColor3f(1, 0, 0)<br />
+                gl.glVertex3f(-d, -d, 0)<br />
+                gl.glColor3f(0, 1, 0)<br />
+                gl.glVertex3f(-d, d, 0)<br />
+                gl.glColor3f(0, 0, 1)<br />
+                gl.glVertex3f(d, d, 0)<br />
+                gl.glColor3f(1, 1, 0)<br />
+                gl.glVertex3f(d, -d, 0)<br />
+                gl.glEnd()<br />
+                gl.glEnable(gl.GL_POINT_SMOOTH)<br />
+                graphics.draw(4, gl.GL_POINTS,<br />
+                <div class="indentation">
+                  ('v2f', (-d2, -d2, -d2, d2, d2, d2, d2, -d2)),<br />
+                  ('c3B', (0, 0, 255, 0, 255, 0, 255, 0, 0, 255, 255, 0)))<br />
+                </div>
+                gl.glDisable(gl.GL_POINT_SMOOTH)<br />
+              </div>
+              app.run()<br />
+            </div>
+          </p>
+          <figure class="image">
+            <img src="http://100byte.ru/python/pyglet_gl/p3.png" alt="">
+            <p class="img-info">Рис. 3. Точки</p>
+          </figure>
+        </a>
 
-        </div>
-      </section>
-    </main>
-  </body>
+        <a class="article" id="Вывод линий">
+          <h2 class="article-title">Вывод линий</h2>
+          <p class="article-content">
+            Для линии можно задать ее толщину:
+            <div class="article-code">gl.glLineWidth(4)</div>
+            и образец (маску):
+            <div class="article-code">
+              gl.glEnable(gl.GL_LINE_STIPPLE) <br />
+              pattern = '0b1111100110011111' # '1111100110011111'<br />
+              gl.glLineStipple(2, int(pattern, 2)) # Повторяем каждый бит образца 2 раза
+            </div>
+            Линии (рис. 4) выводятся после задания GL_LINES, или GL_LINE_STRIP, или GL_LINE_LOOP:
+            <div class="article-code">
+              import pyglet<br />
+              from pyglet import app, gl, graphics<br />
+              from pyglet.window import Window<br /><br />
+              d, d2, d3 = 12, 8, 6<br />
+              wx, wy = 1.5 * d, 1.2 * d # Параметры области визуализации<br />
+              width, height = int(20 * wx), int(20 * wy) # Размеры окна вывода<br />
+              window = Window(visible = True, width = width, height = height,<br />
+              <div class="indentation">
+                resizable = True, caption = 'Линии')<br />
+              </div>
+              gl.glClearColor(0.1, 0.1, 0.1, 1.0)<br />
+              gl.glClear(gl.GL_COLOR_BUFFER_BIT)<br />
+              @window.event<br /><br />
+              def on_draw():<br />
+              <div class="indentation">
+                gl.glMatrixMode(gl.GL_PROJECTION)<br />
+                gl.glLoadIdentity()<br />
+                gl.glOrtho(-wx, wx, -wy, wy, -1, 1)<br />
+                gl.glLineWidth(4)<br />
+                gl.glBegin(gl.GL_LINES)<br />
+                gl.glColor3f(1, 0, 0)<br />
+                gl.glVertex3f(-d, -d, 0)<br />
+                gl.glVertex3f(-d, d, 0)<br />
+                gl.glColor3f(0, 1, 0)<br />
+                gl.glVertex3f(-d, d, 0)<br />
+                gl.glVertex3f(d, d, 0)<br />
+                gl.glColor3f(0, 0, 1)<br />
+                gl.glVertex3f(d, d, 0)<br />
+                gl.glVertex3f(d, -d, 0)<br />
+                gl.glColor3f(1, 1, 0)<br />
+                gl.glVertex3f(d, -d, 0)<br />
+                gl.glVertex3f(-d, -d, 0)<br />
+                gl.glEnd()<br />
+                graphics.draw(5, gl.GL_LINE_STRIP,<br />
+                <div class="indentation">
+                  ('v2f', (-d, -d, -d, d, d, d, d, -d, -d, -d)),<br />
+                  ('c3f', (1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0)))<br />
+                </div>
+                gl.glEnable(gl.GL_LINE_STIPPLE)<br />
+                pattern = '0b1111100110011111' # '1111100110011111'<br />
+                gl.glLineStipple(2, int(pattern, 2)) # Повторяем каждый бит образца 2 раза<br />
+                gl.glColor3f(1, 1, 1)<br />
+                gl.glBegin(gl.GL_LINE_STRIP)<br />
+                gl.glVertex3f(-d2, -d2, 0)<br />
+                gl.glVertex3f(-d2, d2, 0)<br />
+                gl.glVertex3f(d2, d2, 0)<br />
+                gl.glVertex3f(d2, -d2, 0)<br />
+                gl.glVertex3f(-d2, -d2, 0)<br />
+                gl.glEnd()<br />
+                graphics.draw(4, gl.GL_LINE_LOOP,<br />
+                <div class="indentation">
+                  ('v2f', (-d3, -d3, -d3, d3, d3, d3, d3, -d3)))<br />
+                </div>
+                gl.glDisable(gl.GL_LINE_STIPPLE)<br />
+              </div>
+              app.run()
+            </div>
+          </p>
+          <figure class="image">
+            <img src="http://100byte.ru/python/pyglet_gl/p4.png" alt="">
+            <p class="img-info">Рис. 4. Линии</p>
+          </figure>
+        </a>
+        <!-- 
+          <a class="article">
+            <h2 class="article-title"></h2>
+            <p class="article-content"></p>
+          </a>
+          <a class="article">
+            <h2 class="article-title"></h2>
+            <p class="article-content"></p>
+          </a>
+          <a class="article">
+            <h2 class="article-title"></h2>
+            <p class="article-content"></p>
+          </a>
+          <a class="article">
+            <h2 class="article-title"></h2>
+            <p class="article-content"></p>
+          </a>
+          <a class="article">
+            <h2 class="article-title"></h2>
+            <p class="article-content"></p>
+          </a>  -->
+
+      </div>
+    </section>
+  </main>
+</body>
+
 </html>
